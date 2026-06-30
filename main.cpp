@@ -1,4 +1,4 @@
-
+#include "SaveSystem.h"
 #include "player.h"
 #include "welt.h"
 #include <iostream>
@@ -9,6 +9,8 @@ int main() {
   char block;
   welt w;
   player p;
+  saveSystem s;
+
   // gameloop
   do {
     w.showWelt(p);
@@ -48,6 +50,15 @@ int main() {
           p.getInventar().removeItem(p.getSelected())) {
         w.placeBlock(facing, p);
       }
+      break;
+
+    case 'm':
+      s.save(p, w);
+      std::cout << "Game Saved.\n";
+      break;
+
+    case 'l':
+      s.load(p, w);
       break;
 
     case '1':

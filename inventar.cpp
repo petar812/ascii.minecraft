@@ -1,5 +1,6 @@
 #include "inventar.h"
 
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -33,4 +34,25 @@ bool inventar::removeItem(char selectedItem) {
     }
   }
   return false;
+}
+
+void inventar::saveInv(std::ofstream &datei) const {
+  int len = inventar.size();
+  datei << "INVENTAR\n";
+  for (int i = 0; i < len; i++) {
+    datei << inventar[i] << "\n";
+  }
+}
+
+void inventar::loadInv(std::ifstream &datei) {
+  std::string zeile;
+  inventar.clear();
+  while (std::getline(datei, zeile)) {
+    if (zeile == "INVENTAR") {
+      break;
+    }
+  }
+  while (std::getline(datei, zeile)) {
+    inventar.push_back(zeile);
+  }
 }

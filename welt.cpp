@@ -1,7 +1,9 @@
 #include "welt.h"
 
 #include <cstdlib>
+#include <fstream>
 #include <iostream>
+#include <string>
 
 void welt::showWelt(const player &p) {
   system("clear");
@@ -110,5 +112,30 @@ void welt::placeBlock(char facing, const player &p) {
       break;
     }
     break;
+  }
+}
+
+void welt::saveWelt(std::ofstream &datei) const {
+  datei << "WELT\n";
+  for (int i = 0; i < 10; i++) {
+    for (int j = 0; j < 10; j++) {
+      datei << welt[i][j];
+    }
+    datei << "\n";
+  }
+}
+
+void welt::loadWelt(std::ifstream &datei) {
+  std::string zeile;
+  while (std::getline(datei, zeile)) {
+    if (zeile == "WELT") {
+      break;
+    }
+  }
+  for (int i = 0; i < 10; i++) {
+    std::getline(datei, zeile);
+    for (int j = 0; j < 10; j++) {
+      welt[i][j] = zeile[j];
+    }
   }
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "player.h"
+#include <fstream>
 class welt {
 
 private:
@@ -21,4 +22,6 @@ public:
   char getBlockinFront(const player &p, char facing);
   void breakBlock(char facing, const player &p);
   void placeBlock(char facing, const player &p);
+  void saveWelt(std::ofstream &datei) const;
+  void loadWelt(std::ifstream &datei);
 };
