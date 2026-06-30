@@ -3,7 +3,32 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+#include <random>
 #include <string>
+
+void welt::generateWorld() {
+  generateBlocks('T', 8);
+  generateBlocks('S', 4);
+}
+
+void welt::generateBlocks(char block, int amount) {
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<int> distY(1, 8);
+  std::uniform_int_distribution<int> distX(1, 8);
+
+  int blocks = 0;
+  while (blocks < amount) {
+
+    int y = distY(gen);
+    int x = distX(gen);
+
+    if (welt[y][x] == '.') {
+      welt[y][x] = block;
+      blocks++;
+    }
+  }
+}
 
 void welt::showWelt(const player &p) {
   system("clear");

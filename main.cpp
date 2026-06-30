@@ -10,7 +10,7 @@ int main() {
   welt w;
   player p;
   saveSystem s;
-
+  w.generateWorld();
   // gameloop
   do {
     w.showWelt(p);
