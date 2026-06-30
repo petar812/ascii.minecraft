@@ -9,7 +9,8 @@ Ein kleines Minecraft-inspiriertes Sandbox-Spiel im Terminal.
 - Blockabbau
 - Blockplatzierung
 - Inventar
-- Saving/Loading
+- Speicher/Laden
+- Zufällige Weltgeneration
 
 ## Kompilieren
 
